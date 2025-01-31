@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soil Form</title>
+</head>
+<body>
+    <h1>Welcome {{ farmer.name }}</h1>
+    <p>Email: {{ farmer.email }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Example of soil nutrient form -->
+        <label for="nitrogen">Nitrogen:</label>
+        <input type="number" name="nitrogen" required><br>
+        <label for="phosphorus">Phosphorus:</label>
+        <input type="number" name="phosphorus" required><br>
+        <label for="potassium">Potassium:</label>
+        <input type="number" name="potassium" required><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
