@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- for load static files -->
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soil Nutrients : Home</title>
+
+    <link rel="shortcut icon" href="{%static 'images/logo.png' %}" />
+
+    <!-- Google Webfont -->
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Mono"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Themify Icons -->
+    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet" />
+    <!-- Icomoon Icons -->
+    <link href="{% static 'css/icomoon-icons.css' %}" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- font-awesome v6 -->
+    <link
+      href="{% static 'fontawesome-free-5.15.4-web/css/all.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Owl Carousel -->
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'css/owl.theme.default.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Magnific Popup -->
+    <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" />
+
+    <!-- Easy Responsive Tabs -->
+    <link href="{% static 'css/easy-responsive-tabs.css' %}" rel="stylesheet" />
+
+    <!-- Theme Style -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    {% include 'module/header.html' %}
+    <!-- Header -->
+
+    <main role="main">
+      <!-- Start Intro -->
+      <div id="fh5co-intro">
+        <div class="container">
+          <h4 style="text-align: center">Soil Nutrients Prediction</h4>
+          <div class="row">
+            <div class="col-md-12" style="text-align: center">
+              <p style="text-align: center">
+                A machine learning based classification model to predict basic
+                soil nutrients
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Intro -->
+
+      <div class="container" style="text-align: center; display: flex; justify-content: center; align-items: center;">
+        <div class="row" style="width: 60%; max-width: 700px;">
+          <div class="col-md-12">
+            <!-- Start SLIDER -->
+            <div id="js-fh5co-slider" style="width: 100%;">
+              <div class="container" style="width: 100%;">
+                <div class="col-md-12">
+                  <div class="owl-carousel owl-carousel-fullwidth animated slide-container" id="owl_slideshow" style="width: 100%;">
+                    <div class="item" style="display: flex; justify-content: center; align-items: center;">
+                      <img src="{% static 'images/img_large_1.jpg' %}" alt="image" style="width: 82%; height: auto; border-radius: 10px;"/>
+                    </div>
+      
+                    <div class="item" style="display: flex; justify-content: center; align-items: center;">
+                      <img src="{% static 'images/img_large_5.jpg' %}" alt="image" style="width: 82%; height: auto; border-radius: 10px;"/>
+                    </div>
+      
+                    <div class="item" style="display: flex; justify-content: center; align-items: center;">
+                      <img src="{% static 'images/img_large_6.jpg' %}" alt="image" style="width: 82%; height: auto; border-radius: 10px;"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End SLIDER -->
+            <div class="col-md-12" style="height: 50px"></div>
+          </div>
+        </div>
+      </div>
+      
+      <br><br>
+
+      <!-- <div class="fh5co-spacer fh5co-spacer-md"></div> -->
+      <!-- Start Intro -->
+      <div id="fh5co-intro">
+        <div class="container">
+          <h4 style="text-align: center">What is our goal?</h4>
+          <div class="row">
+            <div class="col-md-12 col-md-push-0" style="text-align: center">
+              <p style="text-align: justify">
+                Our objective is to produce an online platform to provide easier
+                access to the information regarding soil nutients
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Intro -->
+
+      <!-- <div class="fh5co-spacer fh5co-spacer-md"></div> -->
+
+      <!-- Start  Let's Chat -->
+      <!-- {% include 'module/contact.html' %} -->
+      <!-- End  Let's Chat -->
+      <!-- <div class="fh5co-spacer fh5co-spacer-sm"></div> -->
+    </main>
+
+    <!-- footer section -->
+    <!-- <div id="content">{% include 'module/footer.html' %}</div> -->
+    <!-- footer section -->
+
+    <!-- Go To Top -->
+    <a href="#" class="fh5co-gotop"><i class="ti-shift-left"></i></a>
+
+    <!-- jQuery -->
+    <script src="{%static 'js/jquery-1.10.2.min.js' %}"></script>
+    <!-- jQuery Easing -->
+    <script src="{%static 'js/jquery.easing.1.3.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{%static 'js/bootstrap.js' %}"></script>
+    <!-- Owl carousel -->
+    <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+
+    <!-- Magnific Popup -->
+    <script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Easy Responsive Tabs -->
+    <script src="{%static 'js/easyResponsiveTabs.js' %}"></script>
+    <!-- FastClick for Mobile/Tablets -->
+    <script src="{%static 'js/fastclick.js' %}"></script>
+    <!-- Velocity -->
+    <script src="{%static 'js/velocity.min.js' %}"></script>
+
+    <!-- Main JS -->
+    <script src="{%static 'js/main.js' %}"></script>
+  </body>
+</html>
