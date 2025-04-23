@@ -35,11 +35,11 @@ body {
 /* Links */
 a {
   transition: all 0.5s ease;
-  color: #BB86FC;
+  color: #000000;
   border-bottom: 2px solid transparent;
 }
 a:hover, a:active, a:focus {
-  color: #E0E0E0;
+  color: #000000;
   border-bottom: 2px solid #BB86FC;
   outline: none;
   text-decoration: none;
@@ -49,7 +49,7 @@ a:hover, a:active, a:focus {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: 400;
   font-family: "PT Mono", sans-serif;
-  color: #E0E0E0;
+  color: #000000;
   text-align: center;
   margin: 0 auto;
 }

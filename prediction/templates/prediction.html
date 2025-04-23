@@ -9,10 +9,17 @@
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" />
 
     <!-- Google Webfont -->
-    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Mono"
+      rel="stylesheet"
+      type="text/css"
+    />
 
     <!-- Bootstrap CSS -->
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
 
     <!-- Custom Style -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
@@ -50,13 +57,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>EC:</label><br>
+                    <label>EC:</label><br />
                     <input type="text" name="ec" required />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>OC:</label><br>
+                    <label>OC:</label><br />
                     <input type="text" name="oc" required />
                   </div>
                 </div>
@@ -71,7 +78,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>P:</label><br>
+                    <label>P:</label><br />
                     <input type="text" name="p" required />
                   </div>
                 </div>
@@ -80,14 +87,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>N:</label><br>
+                    <label>N:</label><br />
                     <input type="text" name="n" required />
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>K:</label><br>
+                    <label>K:</label><br />
                     <input type="text" name="k" required />
                   </div>
                 </div>
@@ -109,18 +116,33 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-primary" style="background: black;">Predict Soil Quality</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="background: black"
+                >
+                  Predict Soil Quality
+                </button>
               </div>
             </form>
 
-            <h4>Soil Quality: <span id="result"></span></h4>
-            <h2 style="color: red;" id="error"></h2>
+            <h4>
+              Soil Quality:
+              <span id="result" class="badge badge-primary"></span>
+            </h4>
+            <h2 style="color: red" id="error"></h2>
           </div>
 
           <!-- Graph Section -->
           <div class="col-md-6">
             <h5>Soil Data Visualization</h5>
             <canvas id="soilChart"></canvas>
+
+            <!-- Fertilizer Recommendations -->
+            <div class="mt-4">
+              <h5>Nutrient Recommendations</h5>
+              <ul id="recommendation-list" class="list-group"></ul>
+            </div>
           </div>
         </div>
       </div>
@@ -128,27 +150,45 @@
 
     <!-- JavaScript to Handle AJAX Form Submission & Real-Time Chart -->
     <script>
-      document.getElementById("soilForm").addEventListener("submit", function(event) {
-        event.preventDefault();  // Prevent form from reloading the page
+      document
+        .getElementById("soilForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form from reloading the page
 
-        let formData = new FormData(this);
-        fetch("{% url 'predict_soil_quality' %}", {
-          method: "POST",
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.error) {
-            document.getElementById("error").textContent = data.error;
-            document.getElementById("result").textContent = "";
-          } else {
-            document.getElementById("result").textContent = data.result;
-            document.getElementById("error").textContent = "";
-            updateChart(data.features, data.values);
-          }
-        })
-        .catch(error => console.error("Error:", error));
-      });
+          let formData = new FormData(this);
+          fetch("{% url 'predict_soil_quality' %}", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                document.getElementById("error").textContent = data.error;
+                document.getElementById("result").textContent = "";
+                document.getElementById("recommendation-list").innerHTML = "";
+              } else {
+                document.getElementById("result").textContent = data.result;
+                document.getElementById("error").textContent = "";
+                updateChart(data.features, data.values);
+
+                // Update recommendations
+                const recList = document.getElementById("recommendation-list");
+                recList.innerHTML = "";
+                if (
+                  data.fertilizer_recommendations &&
+                  data.fertilizer_recommendations.length > 0
+                ) {
+                  data.fertilizer_recommendations.forEach((rec) => {
+                    const li = document.createElement("li");
+                    li.className = "list-group-item";
+                    li.textContent = rec;
+                    recList.appendChild(li);
+                  });
+                }
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        });
 
       // Initialize Chart.js
       let ctx = document.getElementById("soilChart").getContext("2d");
@@ -156,20 +196,22 @@
         type: "bar",
         data: {
           labels: [],
-          datasets: [{
-            label: "Soil Properties",
-            data: [],
-            backgroundColor: "rgba(75, 192, 192, 0.6)"
-          }]
+          datasets: [
+            {
+              label: "Soil Properties",
+              data: [],
+              backgroundColor: "rgba(75, 192, 192, 0.6)",
+            },
+          ],
         },
         options: {
           responsive: true,
           scales: {
             y: {
-              beginAtZero: true
-            }
-          }
-        }
+              beginAtZero: true,
+            },
+          },
+        },
       });
 
       // Function to Update Chart
@@ -179,6 +221,5 @@
         soilChart.update();
       }
     </script>
-
   </body>
 </html>
